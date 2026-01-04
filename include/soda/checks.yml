@@ -1,0 +1,17 @@
+checks for yt_api:
+  - missing_count("video_id") = 0 
+  - duplicate_count("video_id") = 0 
+
+  - failed rows:
+      name: Checks for Like_Count greater than Video_Views
+      fail query: |
+        select count(*) 
+        from yt_api 
+        where "likes_count" > "video_views"
+
+  - failed rows:
+      name: Checks for Comments_Count greater than Video_Views
+      fail query: |
+        select count(*) 
+        from yt_api 
+        where "comments_count" > "video_views"
